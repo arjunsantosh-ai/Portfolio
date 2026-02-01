@@ -254,7 +254,6 @@
             transform: translateY(-5px);
         }
 
-        /* Restoring and styling the profile image in the card */
         .profile-img {
             width: 150px;
             height: 150px;
@@ -264,7 +263,7 @@
             margin-bottom: 15px;
             filter: grayscale(100%);
             transition: var(--transition);
-            display: block; /* Make sure it is displayed */
+            display: block;
         }
 
         .profile-card:hover .profile-img {
@@ -480,7 +479,6 @@
             color: var(--text-muted);
         }
 
-        /* Specific styling for certificate links */
         .cert-link {
             color: var(--primary);
             text-decoration: underline;
@@ -489,7 +487,7 @@
             transition: var(--transition);
             display: inline-block;
             margin-top: 5px;
-            word-break: break-all; /* Prevents long links from breaking layout */
+            word-break: break-all;
         }
 
         .cert-link:hover {
@@ -510,7 +508,7 @@
             padding-bottom: 0;
         }
 
-        /* --- CONTACT SECTION --- */
+        /* --- CONTACT SECTION (Updated) --- */
         #contact {
             padding: 100px 0;
             text-align: center;
@@ -520,39 +518,63 @@
 
         .contact-text {
             color: var(--text-muted);
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             font-size: 1.1rem;
         }
 
-        .contact-form {
-            text-align: left;
-            margin-bottom: 30px;
+        .contact-info-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
         }
 
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-input {
-            width: 100%;
-            padding: 15px;
+        .contact-item {
+            display: flex;
+            align-items: center;
             background: var(--bg-light);
-            border: 1px solid transparent;
-            border-radius: 4px;
-            color: var(--text-main);
-            font-family: 'Inter', sans-serif;
-            font-size: 1rem;
-            outline: none;
+            padding: 20px 30px;
+            border-radius: 8px;
+            width: 100%;
+            text-decoration: none;
             transition: var(--transition);
+            border: 1px solid transparent;
         }
 
-        .form-input:focus {
+        .contact-item:hover {
             border-color: var(--primary);
+            transform: translateY(-5px);
         }
 
-        textarea.form-input {
-            resize: vertical;
-            min-height: 120px;
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-right: 20px;
+            width: 30px;
+            text-align: center;
+        }
+
+        .contact-details {
+            text-align: left;
+        }
+
+        .contact-label {
+            display: block;
+            font-family: monospace;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 5px;
+        }
+
+        .contact-value {
+            display: block;
+            color: var(--text-main);
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .contact-item:hover .contact-value {
+            color: var(--primary);
         }
 
         /* --- FOOTER --- */
@@ -564,32 +586,11 @@
             color: var(--text-muted);
         }
 
-        /* --- ANIMATION & TOAST --- */
+        /* --- ANIMATION --- */
         @keyframes float {
             0% { transform: translateY(0px); }
             50% { transform: translateY(-10px); }
             100% { transform: translateY(0px); }
-        }
-
-        .toast {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: var(--bg-light);
-            color: var(--primary);
-            padding: 15px 25px;
-            border-radius: 4px;
-            border: 1px solid var(--primary);
-            transform: translateY(100px);
-            opacity: 0;
-            transition: var(--transition);
-            z-index: 2000;
-            box-shadow: 0 10px 30px -10px rgba(2, 12, 27, 0.7);
-        }
-
-        .toast.show {
-            transform: translateY(0);
-            opacity: 1;
         }
 
         /* --- RESPONSIVE --- */
@@ -624,6 +625,14 @@
 
             .section-title::after {
                 width: 100px;
+            }
+            
+            .contact-item {
+                padding: 15px 20px;
+            }
+            
+            .contact-icon {
+                margin-right: 15px;
             }
         }
     </style>
@@ -777,7 +786,7 @@
                     </div>
                 </div>
 
-                <!-- Experience 6: 5 Months Experience -->
+                <!-- Experience 6 -->
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <h3 class="exp-role">Frontend Developer Trainee <span class="exp-company">@ EduSkill Foundation</span></h3>
@@ -958,7 +967,7 @@ It helps users quickly determine how much tip to give and the final payable amou
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Contact Section (Updated) -->
     <section id="contact">
         <div class="container">
             <h2 class="section-title"><span>05.</span>Get In Touch</h2>
@@ -966,25 +975,30 @@ It helps users quickly determine how much tip to give and the final payable amou
                 I’m currently seeking new opportunities. I’d be happy to demonstrate my skills beyond my resume if given a chance for an offline assignment or interview.
             </p>
             
-            <form class="contact-form" id="contactForm">
-                <div class="form-group">
-                    <input type="text" class="form-input" placeholder="Your Name" required>
-                </div>
-                <div class="form-group">
-                    <input type="email" class="form-input" placeholder="Your Email" required>
-                </div>
-                <div class="form-group">
-                    <textarea class="form-input" placeholder="Your Message" required></textarea>
-                </div>
-                <div style="text-align: center;">
-                    <button type="submit" class="btn">Say Hello</button>
-                </div>
-            </form>
+            <div class="contact-info-container">
+                <!-- Email Link -->
+                <a href="mailto:arjunsantosh108@gmail.com" class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-details">
+                        <span class="contact-label">Email Me</span>
+                        <span class="contact-value">arjunsantosh108@gmail.com</span>
+                    </div>
+                </a>
 
-            <p style="margin-top: 30px; color: var(--text-muted);">
-                <i class="fas fa-phone-alt" style="margin-right: 10px; color: var(--primary);"></i>(91) 9778132363<br>
-                <i class="fas fa-map-marker-alt" style="margin-right: 10px; color: var(--primary); margin-top: 10px;"></i>Kannur, Kerala, India
-            </p>
+                <!-- Phone Link -->
+                <a href="tel:+919778132363" class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div class="contact-details">
+                        <span class="contact-label">Call Me</span>
+                        <span class="contact-value">+91 9778132363</span>
+                    </div>
+                </a>
+            </div>
+
         </div>
     </section>
 
@@ -992,11 +1006,6 @@ It helps users quickly determine how much tip to give and the final payable amou
     <footer>
         <p>Designed & Built by Arjun Santhosh</p>
     </footer>
-
-    <!-- Toast Notification -->
-    <div id="toast" class="toast">
-        <i class="fas fa-check-circle"></i> Message sent successfully!
-    </div>
 
     <!-- JavaScript -->
     <script>
@@ -1136,25 +1145,6 @@ It helps users quickly determine how much tip to give and the final payable amou
 
         document.querySelectorAll('.timeline-item').forEach(item => {
             observer.observe(item);
-        });
-
-        // --- 4. Form Handling (No Alerts) ---
-        const contactForm = document.getElementById('contactForm');
-        const toast = document.getElementById('toast');
-
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            // Show toast
-            toast.classList.add('show');
-            
-            // Clear form
-            contactForm.reset();
-
-            // Hide toast after 3 seconds
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, 3000);
         });
 
     </script>
